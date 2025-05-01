@@ -1,11 +1,10 @@
-﻿//#define TEST_WMV_FILE
+//#define TEST_WMV_FILE
 
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using MonoGame.Extended.Framework.Media;
 using MonoGame.Extended.VideoPlayback;
 
 namespace Demo.VideoPlayback.WindowsDX;
@@ -37,14 +36,8 @@ public sealed class Game1 : Game
         _graphics.PreferredBackBufferHeight = WindowHeight;
         _graphics.ApplyChanges();
 
-        _videoPlayer = new VideoPlayer(GraphicsDevice);
+        _videoPlayer = new MonoGame.Extended.Framework.Media.VideoPlayer(GraphicsDevice);
         _videoPlayer.IsLooped = true;
-
-        _keyboardStateHandler = new KeyboardStateHandler(this);
-
-        _keyboardStateHandler.KeyUp += KeyboardStateHandler_KeyUp;
-
-        Components.Add(_keyboardStateHandler);
 
         base.Initialize();
     }
@@ -59,8 +52,6 @@ public sealed class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
-
-        _helpTexture = TextureLoader.LoadTexture(GraphicsDevice, "Content/HelpTexture.png");
 
 #if TEST_WMV_FILE
         _video = VideoHelper.LoadFromFile(@"C:\Users\MIC\Desktop\GameVideo\GameVideo\GameVideo\Content\Clip1.wmv");
@@ -98,6 +89,8 @@ public sealed class Game1 : Game
             Exit();
         }
 
+        HandleInput();
+
         // TODO: Add your update logic here
 
         base.Update(gameTime);
@@ -121,10 +114,6 @@ public sealed class Game1 : Game
 
         _spriteBatch.End();
 
-        _spriteBatch.Begin(blendState: BlendState.NonPremultiplied);
-        _spriteBatch.Draw(_helpTexture, Vector2.Zero, Color.White);
-        _spriteBatch.End();
-
         base.Draw(gameTime);
     }
 
@@ -133,18 +122,23 @@ public sealed class Game1 : Game
         _video.Dispose();
         _videoPlayer.Dispose();
 
-        _keyboardStateHandler.KeyUp -= KeyboardStateHandler_KeyUp;
-
         base.Dispose(disposing);
     }
 
-    private void KeyboardStateHandler_KeyUp(object? sender, KeyEventArgs e)
+    private void HandleInput()
     {
-        if (e.KeyCode == Keys.Escape)
+        /// Not debounced and all here, just quick hack to stay close to MonoGame vanilla
+        /// Bring your own logic if you need to debounce or handle multiple keys, cause
+        /// this won't work great!
+        var keyboardState = Keyboard.GetState().GetPressedKeys();
+
+        if (keyboardState.Length == 0) return; 
+
+        if (keyboardState[0] == Keys.Escape)
         {
             Exit();
         }
-        else if (e.KeyCode == Keys.Space)
+        else if (keyboardState[0] == Keys.Space)
         {
             var videoState = _videoPlayer.State;
 
@@ -163,13 +157,13 @@ public sealed class Game1 : Game
                     throw new ArgumentOutOfRangeException();
             }
         }
-        else if (e.KeyCode == Keys.R)
+        else if (keyboardState[0] == Keys.R)
         {
             _videoPlayer.Replay();
         }
         else
         {
-            switch (e.KeyCode)
+            switch (keyboardState[0])
             {
                 case Keys.Left:
                     _videoPlayer.PlayPosition -= TimeSpan.FromSeconds(5);
@@ -184,10 +178,8 @@ public sealed class Game1 : Game
     private const int WindowWidth = 1024;
     private const int WindowHeight = 576;
 
-    private KeyboardStateHandler _keyboardStateHandler = null!;
-
-    private Video _video = null!;
-    private VideoPlayer _videoPlayer = null!;
+    private MonoGame.Extended.Framework.Media.Video _video = null!;
+    private MonoGame.Extended.Framework.Media.VideoPlayer _videoPlayer = null!;
 
     private Texture2D _helpTexture = null!;
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using MonoGame.Extended.VideoPlayback;
 
 namespace Demo.VideoPlayback.WindowsDX;
@@ -16,7 +16,7 @@ internal static class Program
     [STAThread]
     private static void Main()
     {
-        FFmpegBinariesHelper.InitializeFFmpeg();
+        //FFmpegBinariesHelper.InitializeFFmpeg();
 
         using var game = new Game1();
         game.Run();

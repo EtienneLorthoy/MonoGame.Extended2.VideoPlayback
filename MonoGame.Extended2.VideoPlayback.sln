@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.VideoPlayback.WindowsDX", "Demos\Demo.VideoPlayback.WindowsDX\Demo.VideoPlayback.WindowsDX.csproj", "{A433E148-5F8B-71CB-BE33-A219F1EC5259}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Extended.VideoPlayback", "Sources\MonoGame.Extended.VideoPlayback\MonoGame.Extended.VideoPlayback.csproj", "{713F5F61-5C1F-EBA1-A25E-851E27D1E1D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A433E148-5F8B-71CB-BE33-A219F1EC5259}.Debug|x64.ActiveCfg = Debug|x64
+		{A433E148-5F8B-71CB-BE33-A219F1EC5259}.Debug|x64.Build.0 = Debug|x64
+		{A433E148-5F8B-71CB-BE33-A219F1EC5259}.Release|x64.ActiveCfg = Release|x64
+		{A433E148-5F8B-71CB-BE33-A219F1EC5259}.Release|x64.Build.0 = Release|x64
+		{713F5F61-5C1F-EBA1-A25E-851E27D1E1D0}.Debug|x64.ActiveCfg = Debug|x64
+		{713F5F61-5C1F-EBA1-A25E-851E27D1E1D0}.Debug|x64.Build.0 = Debug|x64
+		{713F5F61-5C1F-EBA1-A25E-851E27D1E1D0}.Release|x64.ActiveCfg = Release|x64
+		{713F5F61-5C1F-EBA1-A25E-851E27D1E1D0}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6346AFDC-A670-4F5B-8780-96CCCF712952}
+	EndGlobalSection
+EndGlobal
