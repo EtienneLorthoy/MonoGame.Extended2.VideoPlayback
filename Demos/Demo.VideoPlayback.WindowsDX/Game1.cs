@@ -69,7 +69,6 @@ public sealed class Game1 : Game
     protected override void UnloadContent()
     {
         // TODO: Unload any non ContentManager content here
-        _helpTexture.Dispose();
         _videoPlayer.Stop();
         _video.Dispose();
         _videoPlayer.Dispose();
@@ -180,8 +179,6 @@ public sealed class Game1 : Game
 
     private MonoGame.Extended.Framework.Media.Video _video = null!;
     private MonoGame.Extended.Framework.Media.VideoPlayer _videoPlayer = null!;
-
-    private Texture2D _helpTexture = null!;
 
     private readonly GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch = null!;
