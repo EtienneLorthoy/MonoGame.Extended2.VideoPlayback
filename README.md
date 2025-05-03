@@ -48,7 +48,7 @@ You will need to build the LGPL version of the FFmpeg dependencies, but [FFmpeg-
 
 Sdcb.FFmpeg 6.1 targets conveniently FFmpeg 6.1 binaries, so go to [release tab from FFmpeg-Builds](https://github.com/BtbN/FFmpeg-Builds/releases) and look for the latest _ffmpeg-n6.1-latest-win64-lgpl-shared-6.1.zip_. **Make sure to take the lgpl version, not the gpl one!**
 
-Example:  [ffmpeg-n6.1-latest-win64-gpl-shared-6.1.zip](https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n6.1-latest-win64-lgpl-shared-6.1.zip)
+Example:  [ffmpeg-n6.1-latest-win64-lgpl-shared-6.1.zip](https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n6.1-latest-win64-lgpl-shared-6.1.zip)
 
 Take all bin/*.dll, and add them as copy items for your startup projet to copy them in the output folder when built.
 
